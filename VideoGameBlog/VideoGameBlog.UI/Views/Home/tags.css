@@ -1,0 +1,77 @@
+﻿root {
+    font-family: Arial,Helvetica sans-serif;
+}
+
+.tag {
+    border-radius: 15px 15px 15px 15px;
+}
+
+.tags-input {
+    border: white;
+    display: inline-block;
+}
+
+    .tags-input .tag {
+        font-size: 85%;
+        padding: 0.5em 0.75em;
+        margin: 0.25em 0.1em;
+        display: inline-block;
+        background-color: rgb(168, 207, 219);
+        transition: all 0.1s linear;
+        cursor: pointer;
+    }
+
+        .tags-input .tag:hover {
+            background-color: rgb(24, 153, 245);
+            color: white;
+        }
+
+    .tags-input .main-input {
+        border: 0;
+        outline: 0;
+        padding: 0.5em;
+    }
+
+hr {
+    height: 30px;
+    border-style: solid;
+    border-color: black;
+    border-width: 1px 0 0 0;
+}
+
+.button {
+    font-size: 85%;
+    padding: 0.5em 0.75em;
+    margin: 0.25em 0.1em;
+    display: inline-block;
+    background-color: rgb(245, 12, 12);
+    transition: all 0.1s linear;
+    cursor: pointer;
+}
+
+    .button .hover {
+        background-color: rgb(235, 238, 26);
+        cursor: pointer;
+    }
+
+#About {
+    color: white;
+}
+
+#panel {
+    font-size: 110%;
+    background-color: rgb(207, 206, 205);
+    font-weight: bold;
+    color: black;
+    text-shadow: .5px .5px #ff0000;
+}
+
+body {
+    color: black;
+    background-color: rgb(228, 226, 226);
+    font-weight: bold;
+}
+
+h1 {
+    text-shadow: .5px .5px #ff0000;
+}

@@ -1,0 +1,42 @@
+b) Tag > Create 
+TextboxFor(TagName)
+#fallout #fps #kool
+# - REQUIRED at beginning of string, if not display an error
+string REQUIRED after #
+split on #
+if Tag exists, don't create
+Eliminate spaces and commas
+
+c) Category:
+Dropdown list AND textbox (create/add to post)
+TextboxFor(new Category)
+if exists, don't create
+button front-end function
+required
+
+d) StaticPages > Create
+- (string)Title = not null
+
+- (html string)Content
+ [either or - not null]
+- (file string)Img = File.Exists(img)
+stretch: create data, storage function
+
+e) ViewModels:
+X -PostViewModel(Tag, Category)
+X -SubVM
+X -StatPgVM
+X -ContactVM
+X -PostListVM(SearchObj)
+X -SubmissionListVM(SearchObj)
+X -StaticPageListVM(SearchObj)
+X -UserVM
+X -ListUserVM
+
+f) Search
+datetie SearchDate
+-string SearchParameter not null (either or SelectListItem)
+-param matches[PostTitle,PostCategory]
+if #, param looks for tags
+if date, search for postdate
+

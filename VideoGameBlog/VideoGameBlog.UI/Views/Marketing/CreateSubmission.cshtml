@@ -1,0 +1,45 @@
+﻿@model VideoGameBlog.UI.Models.SubmissionVM
+
+@{
+    ViewBag.Title = "CreateSubmission";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Create Submission</h2><br />
+        @using (Html.BeginForm("CreateSubmission", "Marketing", FormMethod.Post))
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label>Submission Title: </label>
+                @Html.TextBoxFor(m => m.SubmissionTitle, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Submission Body: </label>
+                @Html.TextAreaFor(m => m.SubmissionBody, new { @class = "form-control", id = "submission-content-body", style = "height:220px;" })
+            </div>
+            <div class="form-group">
+                <label>Category: </label>
+                @Html.DropDownListFor(m => m.SubmissionCategoryId, Model.AvailableCategories, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Tags: </label>
+                @Html.TextBoxFor(m => m.SubmissionTags, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Image: </label>
+                <input id="ImageUpload" name="ImageUpload" type="file" class="form-control" />
+            </div>
+            <button class="btn btn-primary">Save</button>
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        tinymce.init({
+            selector: '#submission-content-body'
+        });
+    </script>
+}

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<VideoGameBlog.Models.StaticPage>
+
+@{
+    ViewBag.Title = "StaticPages";
+}
+
+<div class="container">
+    <div class="row">
+        <button class="btn btn-primary">@Html.ActionLink("Add a new Static Page", "AddStaticPage", "Admin", new { @style = "color: white;" })</button>
+    </div>
+</div>
+
+<div>
+    <h1>Static Pages</h1>
+</div>
+
+<div>
+    @foreach (var p in Model)
+    {
+        <div class="col-md-12 panel panel-default">
+            <br />
+            <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-2">
+                    <img class="img-responsive img-rounded" id="image" src="@Url.Content("~/images/" + p.StaticPageImageFileName)" style="height: 100px; width: 140px;" />
+                </div>
+                <div class="col-md-10">
+                    <h3>@Html.ActionLink(p.StaticPageTitle, "EditStaticPage", new { id = p.Id })</h3>
+                </div>
+            </div>
+            <br />
+        </div>
+    }
+</div>

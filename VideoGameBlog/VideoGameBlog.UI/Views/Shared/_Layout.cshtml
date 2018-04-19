@@ -1,0 +1,125 @@
+﻿﻿﻿﻿@using VideoGameBlog.Models
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Video Game Blog</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts")
+    }
+</head>
+<body>
+    <br /><br />
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <div class="navbar-brand" a href="~/Views/Home/Index.cshtml">
+                    Video Game Blog
+                </div>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="staticPagesResults">
+
+                        </ul>
+                    </li>
+
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Marketing<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("View Submissions", "ViewSubmissions", "Marketing")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("View Users", "Users", "Account")</li>
+                            <li>@Html.ActionLink("View Static Pages", "StaticPages", "Admin")</li>
+                            <li>@Html.ActionLink("View Submissions", "ViewSubmissions", "Admin")</li>
+                            <li>@Html.ActionLink("Create Post", "CreatePost", "Admin")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>$(document).ready(function () {
+            staticPages();
+        });
+
+        function staticPages() {
+
+            var detailsPath = '@Url.Action("StaticPageDetails", "Home")/';
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:55957/api/staticpages/get',
+                success: function (results) {
+                    $('#staticPagesResults').empty();
+
+                    $.each(results, function (index, staticPage) {
+
+                        var html = '<li><a href="' + detailsPath + staticPage.Id + '">' + staticPage.StaticPageTitle + '</a></li>';
+
+                        $('#staticPagesResults').append(html.toString());
+                    });
+                },
+                error: function () {
+                    alert('Error performing search. Try again later.')
+                }
+            });
+        }</script>
+</body>
+</html>
+
+
+
+
+@*@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            staticPages();
+        });
+
+        function staticPages() {
+
+            var detailsPath = '@Url.Action("StaticPageDetails", "Home")/';
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost:55957/api/staticpages/get',
+                success: function (results) {
+                    $('#staticPagesResults').empty();
+
+                    $.each(results, function (index, staticPage) {
+
+                        var html = '<li><a href="' + detailsPath + staticPage.StaticPageId + '">' + staticPage.StaticPageTitle + '</a></li>';
+
+                        $('#staticPagesResults').append(html.toString());
+                    });
+                },
+                error: function () {
+                    alert('Error performing search. Try again later.')
+                }
+            });
+        }
+    </script>
+}*@

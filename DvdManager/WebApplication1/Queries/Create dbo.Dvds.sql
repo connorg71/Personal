@@ -1,0 +1,19 @@
+﻿USE [C:\REPOS\COONOR-GLEASON-INDIVIDUAL-WORK\WEBAPPLICATION1\WEBAPPLICATION1\APP_DATA\DVDS.MDF]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Dvds] (
+    [Id]          INT           IDENTITY (1, 1) NOT NULL,
+    [Title]       NVARCHAR (50) NOT NULL,
+    [ReleaseDate] INT           NOT NULL,
+    [Director]    NVARCHAR (50) NOT NULL,
+    [Rating]      NVARCHAR (50) NOT NULL,
+    [Notes]       NVARCHAR (50) NOT NULL
+);
+
+

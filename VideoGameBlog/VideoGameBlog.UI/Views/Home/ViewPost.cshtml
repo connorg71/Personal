@@ -1,0 +1,40 @@
+﻿@model VideoGameBlog.UI.Models.ViewPostVM
+@{
+    ViewBag.Title = "ViewPost";
+}
+
+<div>
+    <div class="col-md-12 panel panel-default">
+        <div class="col-md-12" style="margin-bottom: 40px; margin-top: 35px;">
+            <img class="img-responsive img-rounded" id="image" src="@Url.Content("~/images/" + Model.PostImageFileName)" style="" />
+        </div>
+        <div style="margin-bottom: 20px;">
+            <h1>@Model.PostTitle</h1>
+            <div>
+                <h5>
+                    Category:
+                    @Html.ActionLink(Model.PostCategory.CategoryName, "GetPostByCategory", Model.PostCategory)
+                </h5>
+                <h5>
+                    Tags:
+                    @foreach (var p in Model.PostTags)
+                    {
+                        <text>#@p.TagName  </text>
+                    }
+                </h5>
+                <h5>
+                    @Model.PostedDate.ToShortDateString()
+                </h5>
+
+
+
+            </div>
+            <hr />
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-9" style="margin-bottom: 40px;">
+            @Html.Raw(Model.PostBody)
+        </div>
+    </div>
+</div>
+

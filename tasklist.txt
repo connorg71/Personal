@@ -1,0 +1,72 @@
+Reader [disabled] = Home:
+X -Index
+X -ContactUs
+X -[post]View
+X -Search (Date, title, Tag, Category)
+
+
+Marketing = Marketing:
+
+X -Create Submission
+X -Edit Submission
+X -ListSub[delete]
+
+
+Admin = Admin:
+X -ListStaticPages[CRUD]
+X -CreatePost
+X -[EditPost]
+X -[DeletePost]
+-ViewSubs[Accept, Deny]
+X -[Search Subs] - by User, Title (STRETCH - Tag & Category)
+X -ListUsers
+-AddUser
+-EditUser[DisableUser]
+
+Account = Account:
+-Login
+-AddUser
+-EditUser[DisableUser]
+
+
+
+
+
+
+--------------------------------------------------------------
+
+
+
+
+TASK LIST:
+-Add References
+-Install up-to-date NuGet packages
+
+
+DATA:
+In-Memory Folder:
+-Repositories:
+
+Entity Framwork Folder:
+-Repositories: 
+
+
+MODELS:
+Tables Folder:
+-Post, Tag, PostTag, Submission, SubmissionTag, Category, StaticPage
+
+Queries Folder (???):
+- SubmissionItem
+- PostItem
+
+TESTS:
+-Create IntegrationTests Folder
+-Create MemoryTests Folder
+-Write Tests
+
+
+
+
+
+
+

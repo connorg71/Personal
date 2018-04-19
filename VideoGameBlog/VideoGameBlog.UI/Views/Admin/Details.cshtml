@@ -1,0 +1,46 @@
+﻿@model VideoGameBlog.Models.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+    <div class="col-md-12 panel panel-default">
+
+        <div class="col-md-12" style="margin-bottom: 40px; margin-top: 35px;">
+            <img class="img-responsive img-rounded" id="image" src="@Url.Content("~/images/" + Model.PostImageFileName)" />
+        </div>
+        <div style="margin-bottom: 20px;">
+            <h1>@Model.PostTitle</h1>
+            <div>
+                Category:
+                @Model.PostCategory.CategoryName
+                <br />
+                Tags:
+                @foreach (var p in Model.PostTags)
+                {
+                    <text>#@p.TagName  </text>
+                }
+                <br />
+            </div>
+            <hr />
+        </div>
+        <div class="row">
+
+            <div class="col-md-1"></div>
+            <div class="col-md-9" style="margin-bottom: 40px;">
+                @Html.Raw(Model.PostBody)
+            </div>
+        </div>
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col-md-8"></div>
+            <div class="col-md-2">
+                @Html.ActionLink("Accept", "ReviewSubmission", "Admin", new { id = Model.Id, review = "Accepted" }, new { @style = "color: white;", @class = "btn btn-primary" })
+            </div>
+            <div class="col-md-2">
+                @Html.ActionLink("Deny", "ReviewSubmission", "Admin", new { id = Model.Id, review = "Denied" }, new { @style = "color: white;", @class = "btn btn-danger" })
+            </div>
+        </div>
+
+    </div>
+</div>

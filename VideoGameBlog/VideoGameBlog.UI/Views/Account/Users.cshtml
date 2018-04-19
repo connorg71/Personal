@@ -1,0 +1,36 @@
+﻿@model VideoGameBlog.UI.Models.UserListVM
+@{
+    ViewBag.Title = "Users";
+}
+
+<h2>Users</h2>
+@Html.ActionLink("Add New User", "AddUser", new { }, new { @class = "btn btn-primary", style = "margin-bottom: 20px;" })
+<div class="container">
+    @foreach (var u in Model.Users)
+    {
+        <div class="row panel panel-default">
+            <div class="col-md-3" style="margin-bottom: 20px; margin-top: 25px;">
+                @u.UserName
+            </div>
+            <div class="col-md-3" style="margin-bottom: 20px; margin-top: 25px;">
+                @u.Email
+            </div>
+            @foreach (var ur in u.Roles)
+            {
+                foreach (var r in Model.Roles)
+                {
+                    if (r.Id == ur.RoleId)
+                    {
+                        <div class="col-md-3" style="margin-bottom: 20px; margin-top: 25px;">
+                            @r.Name
+                        </div>
+                    }
+                }
+            }
+            <div class="col-md-3" style="margin-bottom: 20px; margin-top: 20px;">
+                @Html.ActionLink("Edit", "EditUser", new { name = u.UserName }, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    }
+</div>
+

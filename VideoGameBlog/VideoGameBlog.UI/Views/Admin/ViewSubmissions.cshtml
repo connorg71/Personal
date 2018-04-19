@@ -1,0 +1,46 @@
+﻿@model IEnumerable<VideoGameBlog.Models.Post>
+
+@{
+    ViewBag.Title = "ViewSubmissions";
+}
+
+<h2>View Submissions - Admin</h2>
+@foreach (var p in Model)
+{
+    <div class="container panel panel-default">
+        <div class="row">
+            <br />
+            <div class="col-md-2">
+                <img class="img-responsive img-rounded" id="image" src="@Url.Content("~/images/" + p.PostImageFileName)" style="height: 100px; width: 140px;" />
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>@p.PostTitle</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5>Category: @p.PostCategory.CategoryName</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h5>
+                            Tags:
+                            @foreach (var t in p.PostTags)
+                            {
+                                <text>#@t.TagName    </text>
+                            }
+                        </h5>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-2">
+                        @Html.ActionLink("Details", "Details", "Admin", new { id = p.Id }, new { @style = "color: white;", @class = "btn btn-primary" })
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+}

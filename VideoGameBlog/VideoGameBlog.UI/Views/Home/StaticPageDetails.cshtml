@@ -1,0 +1,13 @@
+﻿@model VideoGameBlog.Models.StaticPage
+
+@{
+    ViewBag.Title = "StaticPageDetails";
+}
+
+
+<h2>@Model.StaticPageTitle</h2>
+
+<div>
+    @Html.Raw(Model.StaticPageContent)
+</div>
+

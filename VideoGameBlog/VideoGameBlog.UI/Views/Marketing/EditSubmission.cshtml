@@ -1,0 +1,53 @@
+﻿@model VideoGameBlog.UI.Models.SubmissionVM
+
+@{
+    ViewBag.Title = "EditSubmission";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Edit Submission</h2>
+        @using (Html.BeginForm("EditSubmission", "Marketing", FormMethod.Post))
+        {
+            @Html.ValidationSummary()
+            @Html.HiddenFor(m => m.SubmissionId)
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label>Submission Title: </label>
+                    @Html.TextBoxFor(m => m.SubmissionTitle, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Submission Body: </label>
+                    @Html.TextAreaFor(m => m.SubmissionBody, new { @class = "form-control", id = "submission-content-body", style = "height:220px;" })
+                </div>
+                <div class="form-group">
+                    <label>Category: </label>
+                    @Html.DropDownListFor(m => m.SubmissionCategoryId, Model.AvailableCategories, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <label>Tags: </label>
+                    @Html.TextBoxFor(m => m.SubmissionTags, new { @class = "form-control" })
+                </div>
+                <button class="btn btn-primary">Save</button>
+            </div>
+            <div class="col-md-6">
+                <img style="height: 350px; border: groove" src="@Url.Content("~/Images/" + Model.SubmissionImageFileName)" />
+                <div class="form-group">
+                    <label>Replace Image: </label>
+                    @Html.TextBoxFor(m => m.SubmissionImageFileName, new { @class = "form-control", id = "ImageUpload", name = "ImageUpload", type = "file" })
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+@section Scripts
+{
+    <script>
+        tinymce.init({
+            selector: '#submission-content-body'
+        });
+    </script>
+}

@@ -1,0 +1,46 @@
+﻿@model VideoGameBlog.UI.Models.HomeIndexVM
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="row">
+    <div class="col-sm-12 text-left">
+        <h1>Welcome</h1>
+        <p>Welcome to my website where I post beautiful screenshots from videogames.</p>
+        <hr>
+    </div>
+</div>
+<div>
+
+    @foreach (var p in Model.Posts)
+    {
+        <div class="col-md-12 panel panel-default">
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="img-responsive img-rounded" id="image" src="@Url.Content("~/images/" + p.PostImageFileName)" style="height: 100px; width: 140px;" />
+                </div>
+                <div class="col-md-10">
+                    <h3>@Html.ActionLink(p.PostTitle,"ViewPost", new {id = p.PostId })</h3>
+                    <h5>Category: @Html.ActionLink(p.PostCategory.CategoryName, "GetPostByCategory", p.PostCategory)</h5>
+                    <h5>
+                        Tags: @foreach (var t in p.PostTags)
+                        {
+                            <text>#@t.TagName </text>
+                        }
+                    </h5>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-9">
+                            @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                            {
+                                @Html.ActionLink("Edit", "EditPost", "Admin", new { id = p.PostId }, new { @class = "btn btn-primary", style = "margin-right:10px;width:70px;"})
+                                @Html.ActionLink("Delete", "DeletePost", "Admin", new { id = p.PostId }, new { @class = "btn btn-danger", style = "width:70px;" })
+                            }
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    }
+</div>

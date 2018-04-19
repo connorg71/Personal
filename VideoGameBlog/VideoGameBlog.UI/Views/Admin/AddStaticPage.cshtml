@@ -1,0 +1,37 @@
+﻿@model VideoGameBlog.UI.Models.StaticPageVM
+
+@{
+    ViewBag.Title = "AddStaticPage";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Create New Static Page</h2>
+        @using (Html.BeginForm("AddStaticPage", "Admin", FormMethod.Post))
+        {
+            @Html.ValidationSummary()
+            <div class="form-group">
+                <label>Page Title: </label>
+                @Html.TextBoxFor(m => m.StaticPageTitle, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Page Body: </label>
+                @Html.TextAreaFor(m => m.StaticPageContent, new { @class = "form-control", id = "static-page-content-body", style = "height:220px;" })
+            </div>
+            <div class="form-group">
+                <label>Image: </label>
+                <input id="ImageUpload" name="ImageUpload" type="file" class="form-control" />
+            </div>
+            <button class="btn btn-primary">Save</button>
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        tinymce.init({
+            selector: '#static-page-content-body'
+        });
+    </script>
+}

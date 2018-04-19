@@ -1,0 +1,46 @@
+﻿@model VideoGameBlog.UI.Models.UserVM
+@{
+    ViewBag.Title = "AddUser";
+}
+
+<h2>New User Form</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-6 form-group">
+            @Html.LabelFor(m => m.UserName, "Username")
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+            <span class="text-danger">@Html.ValidationMessageFor(m => m.UserName)</span>
+        </div>
+        <div class="col-md-6 form-group">
+            @Html.LabelFor(m => m.Email, "Email")
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            <span class="text-danger">@Html.ValidationMessageFor(m => m.Email)</span>
+        </div>
+        <div class="col-md-6 form-group">
+            @Html.LabelFor(m => m.Phone, "Phone Number")
+            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+            <span class="text-danger">@Html.ValidationMessageFor(m => m.Phone)</span>
+        </div>
+        <div class="col-md-6 form-group">
+            @Html.LabelFor(m => m.RoleName, "Blog Role")
+            @Html.DropDownListFor(m => m.RoleName, Model.AvailableRoles, new { @class = "form-control" })
+            <span class="text-danger">@Html.ValidationMessageFor(m => m.RoleName)</span>
+        </div>
+        <div class="col-md-6 form-group">
+            @Html.LabelFor(m => m.Password, "Password")
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            <span class="text-danger">@Html.ValidationMessageFor(m => m.Password)</span>
+        </div>
+        <div class="col-md-6 form-group">
+            @Html.LabelFor(m => m.ConfirmPasswordPrompt, "Confirm Password")
+            @Html.PasswordFor(m => m.ConfirmPasswordPrompt, new { @class = "form-control" })
+            <span class="text-danger">@Html.ValidationMessageFor(m => m.ConfirmPasswordPrompt)</span>
+        </div>
+        <div class="col-md-3 col-md-offset-8">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+}
+

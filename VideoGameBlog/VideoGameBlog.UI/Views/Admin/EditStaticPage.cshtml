@@ -1,0 +1,47 @@
+﻿@model VideoGameBlog.UI.Models.StaticPageVM
+
+@{
+    ViewBag.Title = "EditStaticPage";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Edit Submission</h2>
+        @using (Html.BeginForm("EditStaticPage", "Admin", FormMethod.Post))
+        {
+            @Html.ValidationSummary()
+            @Html.HiddenFor(m => m.StaticPageId)
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Page Title: </label>
+                    @Html.TextBoxFor(m => m.StaticPageTitle, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Page Body: </label>
+                    @Html.TextAreaFor(m => m.StaticPageContent, new { @class = "form-control", id = "static-page-content-body", style = "height:220px;" })
+                </div>
+            </div>
+            <div class="col-md-12">
+                <img src="@Url.Content("~/Images/" + Model.StaticPageImageFileName)" />
+                <div class="form-group">
+                    <label>Replace Image: </label>
+                    <input id="ImageUpload" name="ImageUpload" type="file" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button type ="submit" class="btn btn-primary">Save</button>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        tinymce.init({
+            selector: '#static-page-content-body'
+        });
+    </script>
+}

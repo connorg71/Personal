@@ -1,0 +1,48 @@
+﻿@model IEnumerable<VideoGameBlog.Models.Post>
+
+@{
+    ViewBag.Title = "ViewSubmissions";
+}
+
+<div class="container">
+    <div class="row">
+        @Html.ActionLink("Add a new Submission", "CreateSubmission", "Marketing", new { @style = "color: white;", @class = "btn btn-primary" })
+    </div>
+</div>
+
+<h2>View Submissions</h2>
+@foreach (var p in Model)
+{
+    <div class="container panel panel-default">
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <h3>@p.PostTitle</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h5>Category: @p.PostCategory.CategoryName</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>
+                    Tags:
+                    @foreach (var t in p.PostTags)
+                    {
+                        <text>#@t.TagName    </text>
+                    }
+                </h5>
+            </div>
+            <div class="col-md-2">
+                @Html.ActionLink("Edit", "EditSubmission", "Marketing", new { id = p.Id }, new { @style = "color: white;", @class = "btn btn-danger form-control" })
+            </div>
+            <div class="col-md-2">
+                @Html.ActionLink("Delete", "DeleteSubmission", "Marketing", new { id = p.Id }, new { @style = "color: white;", @class = "btn btn-danger form-control" })
+            </div>
+        </div>
+        <br />
+    </div>
+}
+

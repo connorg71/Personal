@@ -1,0 +1,35 @@
+﻿@model IEnumerable<VideoGameBlog.Models.Post>
+
+@{
+    ViewBag.Title = "GetPostByCategory";
+}
+
+<h2>Category: @Model.FirstOrDefault().PostCategory.CategoryName</h2>
+<hr />
+
+<div>
+    @foreach (var p in Model)
+    {
+        <div class="col-md-12 panel panel-default">
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="img-responsive img-rounded" id="image" src="@Url.Content("~/images/" + p.PostImageFileName)" style="height: 100px; width: 140px;" />
+                </div>
+                <div class="col-md-10">
+                    <h3>@Html.ActionLink(p.PostTitle, "ViewPost", new { id = p.Id })</h3>
+                    <h5>Category: @Html.ActionLink(p.PostCategory.CategoryName, "GetPostByCategory", p.PostCategory)</h5>
+                    <h5>
+                        Tags: @foreach (var t in p.PostTags)
+                        {
+                            <text>#@t.TagName </text>
+                        }
+                    </h5>
+                    <h5>@p.PostedDate.ToShortDateString()</h5>
+                    <br />
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
