@@ -1,0 +1,31 @@
+﻿@model List<Exercises.Models.Data.Course>
+@{
+    ViewBag.Title = "Courses";
+}
+
+<h2>ListCpurses</h2>
+
+<table style="width:100%">
+    <tr>
+        <th>CourseName</th>
+        <th>CourseID</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var course in Model)
+    {
+    <tr>
+        <td>@course.CourseName.ToString()</td>
+        <td>@course.CourseId.ToString()</td>
+        <td>@Html.ActionLink("Delete", "DeleteCourse", new { CourseId = course.CourseId })</td>
+        <td>@Html.ActionLink("Edit", "EditCourse", new { CourseId = course.CourseId })</td>
+    </tr>
+
+    }
+    <tr>
+        <td colspan="2">
+            @Html.ActionLink("Add Course", "AddCourse")
+        </td>
+    </tr>
+</table>
