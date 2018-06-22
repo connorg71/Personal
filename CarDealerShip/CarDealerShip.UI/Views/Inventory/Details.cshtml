@@ -1,0 +1,37 @@
+﻿@model CarDealerShip.Model.Vehicle
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ModelYear)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModelYear)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+                
+    </dl>
+    @if (!Model.Sold)
+    {
+    <a href="@Url.Action("Contact", "Home", new { vin = Model.Vin })" class="btn btn-info">Contact Us</a>
+    }
+    else
+    {
+        <div>Unavailable-Sold</div>
+    }
+</div>

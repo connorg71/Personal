@@ -1,0 +1,55 @@
+﻿@model CarDealerShip.UI.ViewModel.AddVehicleModelViewModel
+
+@{
+    ViewBag.Title = "Models";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Models</h2>
+@using (Html.BeginForm())
+{
+<div class="row">
+    <div class="col-1">
+        New Model
+    </div>
+    <div class="col-3">
+        @Html.TextBoxFor(p => p.VehicleModelDescription)
+    </div>
+    <div class="col-1">
+        Make
+    </div>
+    <div class="col-3">
+        @Html.DropDownListFor(p => Model.MakeId, Model.AvailableMakes)
+    </div>
+    <div class="col-1">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</div>
+}
+<table class="table">
+    <tr>
+        <th>
+           Make
+        </th>
+        <th>
+           Model
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.VehicleModels) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>       
+    </tr>
+}
+
+</table>

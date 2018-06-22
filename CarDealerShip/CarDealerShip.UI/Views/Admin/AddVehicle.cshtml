@@ -1,0 +1,45 @@
+﻿@model CarDealerShip.UI.ViewModel.AddVehicleViewModel
+
+@{
+    ViewBag.Title = "AddVehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddVehicle</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.EditorFor(p => p.Vehicle)
+       
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $("#availableMakes").on("change", function () {
+            var selectedMake = $('#availableMakes').val();
+            $.ajax({
+                type: 'GET',
+                url: 'getModels',
+                data: { makeId: selectedMake },
+                success: function (data) {
+                    var target = $('#availableModels');
+                    target.empty();
+                    for (index = 0; index < data.length; index++) {
+                        var item = data[index];
+                        target.append('<option value = ' + item.Id + '>' + item.Description + '</option>');
+                    }
+                }
+            });
+        });
+    });
+</script>

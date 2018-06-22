@@ -1,0 +1,79 @@
+﻿@model CarDealerShip.Model.tables.Vehicle
+@{
+    ViewBag.Title = "Vehicle";
+}
+
+
+<div class="row">
+    <div class="col-6">
+        <div>Make</div>
+        <div>@Html.DropDownListFor(p => Model.Make, ViewBag.AvailableMakes as List<SelectListItem>, new { id = "availableMakes" })</div>
+    </div>
+    <div class="col-6">
+        <div>Model</div>
+        <div>@Html.DropDownListFor(p => Model.Model, new List<SelectListItem>(), new { id = "availableModels" })</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div>Type</div>
+        <div>@Html.DropDownListFor(p => Model.Type, ViewBag.AvailableTypes as List<SelectListItem>)</div>
+    </div>
+    <div class="col-6">
+        <div>BodyStyle</div>
+        <div>@Html.DropDownListFor(p => Model.BodyStyle, ViewBag.AvailableBodyStyles as List<SelectListItem>)</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div>Year</div>
+        <div>@Html.TextBoxFor(p => Model.ModelYear)</div>
+    </div>
+    <div class="col-6">
+        <div>Transmission</div>
+        <div>@Html.DropDownListFor(p => Model.Transmission, ViewBag.AvailableTransmissions as List<SelectListItem>)</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div>Color</div>
+        <div>@Html.DropDownListFor(p => Model.Color, ViewBag.AvailableColors as List<SelectListItem>)</div>
+    </div>
+    <div class="col-6">
+        <div>Interior</div>
+        <div>@Html.DropDownListFor(p => Model.Interior, ViewBag.AvailableInteriors as List<SelectListItem>)</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div>Mileage</div>
+        <div>@Html.TextBoxFor(p => Model.Mileage)</div>
+    </div>
+    <div class="col-6">
+        <div>VIN #</div>
+        <div>@Html.TextBoxFor(p => Model.Vin)</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-6">
+        <div>MSRP</div>
+        <div>@Html.TextBoxFor(p => Model.MSRP)</div>
+    </div>
+    <div class="col-6">
+        <div>Sale Price</div>
+        <div>@Html.TextBoxFor(p => Model.SalePrice)</div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div>Description</div>
+        @Html.TextAreaFor(p => p.Description, 12)
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div>Picture</div>
+        <input type="file" name="PictureUrl" />
+    </div>
+</div>
+

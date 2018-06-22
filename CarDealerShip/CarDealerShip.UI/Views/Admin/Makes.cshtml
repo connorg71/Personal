@@ -1,0 +1,29 @@
+﻿@model IEnumerable<CarDealerShip.Model.tables.Make>
+
+@{
+    ViewBag.Title = "Makes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Makes</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+    </tr>
+}
+
+</table>

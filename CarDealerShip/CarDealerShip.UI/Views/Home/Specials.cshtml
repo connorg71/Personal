@@ -1,0 +1,21 @@
+﻿@model CarDealerShip.UI.ViewModel.SpecialsViewModel
+@{
+    ViewBag.Title = "Specials";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Specials</h2>
+
+<div class="container">
+    @foreach (var special in Model.Specials)
+    {
+    <div class="row bordered-row">
+
+        <div class="col-1"><i class="fas fa-car"></i></div>
+        <div class="col-11">
+            <div class="row">@special.Title</div>
+            <div class="row">@special.Description</div>
+        </div>
+    </div>
+    }
+</div>

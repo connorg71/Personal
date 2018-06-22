@@ -1,0 +1,28 @@
+﻿@model CarDealerShip.Model.tables.Vehicle
+@{
+    ViewBag.Title = "AddVehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+<div class="form-horizontal">
+    @Html.EditorForModel()
+
+    <div class="form-group">
+        <div>@Html.CheckBoxFor(p => p.Featured)Feature this vehicle</div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-2">
+            @Html.ActionLink("Delete", "DeleteVehicle", new { Id = Model.Id }, new { @class = "btn btn-danger" })
+        </div>
+        <div class="col-2">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+

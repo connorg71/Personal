@@ -1,0 +1,21 @@
+﻿@model IEnumerable<CarDealerShip.Model.tables.Vehicle>
+@{
+    ViewBag.Title = "Search";
+    Layout = null;
+}
+
+
+<div class="container">
+    @foreach (var car in Model)
+    {
+        <div class="row bordered-row">
+
+            <div class="col-1"><i class="fas fa-car"></i></div>
+            <div class="col-11">
+                <div class="row">@car.ModelYear</div>
+                <div class="row">@car.SalePrice</div>
+                <div class="row"><a href="@Url.Action("purchase", "sales", new { id = car.Id })" class="btn-info btn">Purchase</a> </div>
+            </div>
+        </div>
+    }
+</div>

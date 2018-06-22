@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "AccessDenied";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h1 style="text-align:center">ACCESS DENIED</h1>
+                </div>
+                <div class="panel-body">
+                    <h4 style="text-align:justify">If you are seeing this message, it means you tried to access a page you have no authorization to view. If you are a user, please visit the @Html.ActionLink("User Login", "Login") page to authorize your user identity before proceeding. If a user login from this ISP address within the next five minute, a call will be placed to local authorities will be made and a SWAT team will be dispatched.</h4>
+                    <h3 style="text-align:center">Have a wonderful day!</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
